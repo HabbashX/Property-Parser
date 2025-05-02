@@ -1,0 +1,9 @@
+com\habbashx\annotation\UseConverter.class
+com\habbashx\converter\PropertyConverter.class
+com\habbashx\injector\PropertyInjector.class
+com\habbashx\parser\DataTypeParser.class
+com\habbashx\annotation\Required.class
+com\habbashx\annotation\InjectPrefix.class
+com\habbashx\decryptor\PropertyDecryptor.class
+com\habbashx\annotation\InjectProperty.class
+com\habbashx\annotation\DecryptWith.class
