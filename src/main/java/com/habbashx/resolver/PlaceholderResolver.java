@@ -9,14 +9,12 @@ import java.util.regex.Pattern;
 
 public final class PlaceholderResolver extends Resolver {
 
-    private static final Pattern PATTERN = Pattern.compile("\\$\\{(.+?)\\}");
+    private static final Pattern PATTERN = Pattern.compile("\\$\\{(.+?)}");
 
     @Override
     public @NotNull String resolve(@NotNull String value , Properties properties) {
 
-        if (value.isEmpty()) {
-            return value;
-        }
+        if (value.isEmpty()) return value;
 
         StringBuilder result = new StringBuilder();
         Matcher matcher = PATTERN.matcher(value);
