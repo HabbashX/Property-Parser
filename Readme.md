@@ -22,3 +22,74 @@ A flexible and powerful Java library to load, validate, and manage application p
      <version>1.0</version>
    </dependency>
 ```
+
+## Property Injector Usage:
+
+```java
+import com.habbashx.annotation.DecryptWith;
+import com.habbashx.annotation.DefaultValue;
+import com.habbashx.annotation.InjectList;
+import com.habbashx.annotation.InjectPrefix;
+import com.habbashx.annotation.InjectProperty;
+import com.habbashx.annotation.Required;
+import com.habbashx.annotation.UseConverter;
+import com.habbashx.injector.PropertyInjector;
+
+import java.io.File;
+import java.time.LocalDate;
+
+public class Example {
+
+    @InjectProperty("settings.database.url")
+    @Required
+    private String databaseURL;
+
+    @InjectProperty("settings.database.user")
+    private String user;
+
+    @InjectProperty("settings.database.password")
+    @DecryptWith(PasswordDecryptor.class)
+    @Required
+    private String password;
+
+    @InjectList("settings.users")
+    private List<String> usersList;
+
+    @InjectProperty("settings.database.localDate")
+    @UseConverter(LocalDateConverter.class)
+    private LocalDate localDate;
+
+    @InjectPrefix("settings.database")
+    private PrefixExample prefixExample;
+
+    public static void main(String[] args) {
+        PropertyInjector propertyInjector = new PropertyInjector(new File("settings.properties"));
+        Example exampleInstance = new Example();
+
+        propertyInjector.inject(exampleInstance);
+    }
+}
+
+class PrefixExample {
+    @InjectProperty("url")
+    @Required
+    private String databaseURL;
+
+    @InjectProperty("user")
+    private String user;
+
+    @InjectProperty("password")
+    @DecryptWith(PasswordDecryptor.class)
+    @Required
+    private String password;
+
+    @InjectProperty("localDate")
+    @UseConverter(LocalDateConverter.class)
+    private LocalDate localDate;
+    
+    @InjectList("users")
+    private List<String> usersList;
+
+
+}
+```
