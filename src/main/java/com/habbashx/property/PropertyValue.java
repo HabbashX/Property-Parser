@@ -4,12 +4,27 @@ import java.io.Serial;
 import java.io.Serializable;
 import java.util.Objects;
 
+/**
+ * Represents a property value with both its raw and converted forms.
+ * This class is designed to handle the underlying representations of a property
+ * in its original string format (raw value) and its potentially processed representation (converted value).
+ * It also provides functionality for equality comparison and hashing based on the property values.
+ */
 public class PropertyValue implements Serializable {
 
     @Serial
     private static final long serialVersionUID = -4221062570424312940L;
 
+    /**
+     * Represents the raw value of a property as a string. This value is typically
+     * the unprocessed or original representation of the property's data.
+     */
     private String rawValue;
+    /**
+     * Represents the processed or transformed value of a property.
+     * This variable holds the converted form of the property's data,
+     * which may differ from its original raw representation.
+     */
     private Object convertedValue;
 
     public PropertyValue(String rawValue) {

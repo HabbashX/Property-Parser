@@ -9,10 +9,44 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="08ae466d-114a-4c60-98bd-3fe301f875bf" name="Changes" comment="show the usage of project in Readme.md file">
+    <list default="true" id="08ae466d-114a-4c60-98bd-3fe301f875bf" name="Changes" comment=".">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/LICENCE" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/habbashx/annotation/DecryptWith.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/habbashx/annotation/DecryptWith.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/habbashx/annotation/DefaultValue.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/habbashx/annotation/DefaultValue.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/habbashx/annotation/InjectList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/habbashx/annotation/InjectList.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/habbashx/annotation/InjectPrefix.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/habbashx/annotation/InjectPrefix.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/habbashx/annotation/InjectProperty.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/habbashx/annotation/InjectProperty.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/habbashx/annotation/Required.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/habbashx/annotation/Required.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/habbashx/annotation/UseConverter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/habbashx/annotation/UseConverter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/habbashx/converter/PropertyConverter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/habbashx/converter/PropertyConverter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/habbashx/decryptor/PropertyDecryptor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/habbashx/decryptor/PropertyDecryptor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/habbashx/exception/EmptyItemException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/habbashx/exception/EmptyItemException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/habbashx/exception/EmptyListException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/habbashx/exception/EmptyListException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/habbashx/exception/InvalidEnumerationValueException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/habbashx/exception/InvalidEnumerationValueException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/habbashx/exception/UnSupportedTypeException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/habbashx/exception/UnSupportedTypeException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/habbashx/injector/PropertyInjector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/habbashx/injector/PropertyInjector.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/habbashx/manager/PropertiesManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/habbashx/manager/PropertiesManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/habbashx/parser/DataTypeParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/habbashx/parser/DataTypeParser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/habbashx/parser/ListParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/habbashx/parser/ListParser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/habbashx/property/PropertiesStore.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/habbashx/property/PropertiesStore.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/habbashx/property/PropertyElement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/habbashx/property/PropertyElement.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/habbashx/property/PropertyValue.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/habbashx/property/PropertyValue.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/habbashx/resolver/ExternalPropertyResolver.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/habbashx/resolver/ExternalPropertyResolver.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/habbashx/resolver/PlaceholderResolver.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/habbashx/resolver/PlaceholderResolver.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/habbashx/resolver/Resolver.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/habbashx/resolver/Resolver.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/habbashx/injector/PropertyInjector.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/habbashx/injector/PropertyInjector.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/habbashx/parser/DataTypeParser.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/habbashx/parser/DataTypeParser.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/habbashx/parser/ListParser.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/habbashx/parser/ListParser.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/habbashx/property/PropertiesStore.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/habbashx/property/PropertiesStore.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/habbashx/property/PropertyElement.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/habbashx/property/PropertyElement.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/habbashx/property/PropertyValue.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/habbashx/property/PropertyValue.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/habbashx/resolver/ExternalPropertyResolver.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/habbashx/resolver/ExternalPropertyResolver.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/habbashx/resolver/PlaceholderResolver.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/habbashx/resolver/PlaceholderResolver.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/habbashx/validation/PropertyValidator.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/habbashx/validation/PropertyValidator.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/module-info.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/module-info.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/property-parser-1.0.jar" beforeDir="false" afterPath="$PROJECT_DIR$/target/property-parser-1.0.jar" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -44,12 +78,12 @@
     &quot;assignee&quot;: &quot;HabbashX&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings">{
-  &quot;selectedUrlAndAccountId&quot;: {
-    &quot;url&quot;: &quot;https://github.com/HabbashX/Property-Parser.git&quot;,
-    &quot;accountId&quot;: &quot;cdceb3e0-7a4e-466a-b40f-6408b1e738fa&quot;
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/HabbashX/Property-Parser.git",
+    "accountId": "9ef3b5a0-b3a8-4a4e-9054-a9fb770c4a9b"
   }
-}</component>
+}]]></component>
   <component name="ProblemsViewState">
     <option name="selectedTabId" value="CurrentFile" />
   </component>
@@ -74,10 +108,16 @@
     &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
     &quot;last_opened_file_path&quot;: &quot;C:/Users/abo.dalal.laptop/Desktop/projects/property-parser&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
     &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;project.propVCSSupport.DirectoryMappings&quot;
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
   <component name="RecentsManager">
@@ -112,6 +152,14 @@
       </list>
     </recent_temporary>
   </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-9823dce3aa75-28b599e66164-intellij.indexing.shared.core-IU-242.23339.11" />
+        <option value="bundled-js-predefined-d6986cc7102b-5c90d61e3bab-JavaScript-IU-242.23339.11" />
+      </set>
+    </attachedChunks>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -120,6 +168,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1744813136210</updated>
+      <workItem from="1746792131003" duration="128000" />
+      <workItem from="1746819394817" duration="47000" />
+      <workItem from="1746822469798" duration="625000" />
+      <workItem from="1746896995780" duration="1392000" />
+      <workItem from="1746958156042" duration="21000" />
+      <workItem from="1747396375005" duration="971000" />
     </task>
     <task id="LOCAL-00001" summary="created">
       <option name="closed" value="true" />
@@ -177,8 +231,19 @@
       <option name="project" value="LOCAL" />
       <updated>1746522496317</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary=".">
+      <option name="closed" value="true" />
+      <created>1746555270424</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1746555270424</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="OPEN_GENERIC_TABS">
@@ -221,9 +286,9 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="created" />
     <MESSAGE value="LICENCE" />
-    <MESSAGE value="." />
     <MESSAGE value="project created" />
     <MESSAGE value="show the usage of project in Readme.md file" />
-    <option name="LAST_COMMIT_MESSAGE" value="show the usage of project in Readme.md file" />
+    <MESSAGE value="." />
+    <option name="LAST_COMMIT_MESSAGE" value="." />
   </component>
 </project>
