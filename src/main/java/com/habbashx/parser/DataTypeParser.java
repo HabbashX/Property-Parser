@@ -4,6 +4,9 @@ import com.habbashx.exception.InvalidEnumerationValueException;
 import com.habbashx.exception.UnSupportedTypeException;
 import org.jetbrains.annotations.NotNull;
 
+import java.math.BigDecimal;
+import java.math.BigInteger;
+
 /**
  * Utility class providing methods to parse and transform string representations
  * into```java specified
@@ -54,10 +57,18 @@ public final class DataTypeParser {
             return Short.parseShort(value);
         } else if (type == String.class) {
             return value;
+        } else if (type == BigInteger.class) {
+            return new BigInteger(value);
+        } else if (type == BigDecimal.class) {
+            return new BigDecimal(value);
         } else {
-            throw new UnSupportedTypeException("unsupported type: "+type);
+            final Object result = ObjectParser.parseObject(value);
+            if (result != null) {
+                return result;
+            } else {
+                throw new UnSupportedTypeException("unsupported type: " + type);
+            }
         }
-
     }
 
     /**
