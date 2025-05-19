@@ -1,4 +1,4 @@
-# 🛠️ Property Parser
+# 🛠️ Property Parser 1.1
 
 A flexible and powerful Java library to load, validate, and manage application properties with advanced features like type conversion, validation rules, dynamic file references, and more.
 
@@ -11,6 +11,12 @@ A flexible and powerful Java library to load, validate, and manage application p
 - ✅ Inline lambda-based validation rules
 - 🧩 Easy integration with other Java apps
 - 🔄 Support for referencing properties from external files (e.g., `file.properties:some.key`)
+---
+
+---
+## ✨New Features
+- 🧩 Property Parser now supports BigDecimal and BigInteger
+- 🧩 now you can inject an instance of any serialized object into target field just by define the file name that the serialized object been stored in. (example.properties = object.dat)
 
 ---
 

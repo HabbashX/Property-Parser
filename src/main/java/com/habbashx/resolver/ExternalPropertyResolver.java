@@ -80,14 +80,19 @@ public final class ExternalPropertyResolver extends Resolver {
         if (parts.length <= 2) {
             String fileName = parts[0];
             int lastIndex = fileName.indexOf(">");
-            String extractedFileName = fileName.substring(1,lastIndex);
-            String property = parts[1];
 
-            if (!extractedFileName.contains(".properties")) {
-                extractedFileName = extractedFileName + ".properties";
+            if (lastIndex != -1) {
+                String extractedFileName = fileName.substring(1, lastIndex);
+                String property = parts[1];
+
+                if (!extractedFileName.contains(".properties")) {
+                    extractedFileName = extractedFileName + ".properties";
+                }
+                loadProperties(extractedFileName);
+                return getPropertyValue(property);
+            } else {
+                return value;
             }
-            loadProperties(extractedFileName);
-            return getPropertyValue(property);
         }
         return null;
     }

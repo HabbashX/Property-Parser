@@ -158,9 +158,7 @@ public class PropertyInjector {
                 return;
             }
         }
-
-        rawValue = placeholderResolver.resolve(rawValue, properties);
-        inject(field, instance, rawValue, externalPropertyResolver);
+        inject(field, instance, rawValue);
 
     }
     /**
@@ -248,18 +246,17 @@ public class PropertyInjector {
      * @param rawValue           The raw property value to be processed and injected into the field.
      *                           It may be resolved using a placeholder resolver or transformed
      *                           based on the field annotations.
-     * @param placeholderResolver The resolver used to resolve placeholders or process the raw value
-     *                            before any other steps. This must be a valid implementation of {@code Resolver}.
-     *
      * @throws IllegalAccessException If the specified field cannot be written to, such as when it's inaccessible
      *                                or final.
      */
-    private void inject(Field nestedField, Object instance, String rawValue, Resolver placeholderResolver) throws IllegalAccessException {
+    private void inject(@NotNull Field nestedField, Object instance, String rawValue) throws IllegalAccessException {
+        rawValue = externalPropertyResolver.resolve(rawValue,properties);
         rawValue = placeholderResolver.resolve(rawValue,properties);
 
         if (nestedField.isAnnotationPresent(DecryptWith.class)) {
             rawValue = decryptWith(nestedField,rawValue);
         }
+
         Object convertedValue;
 
         if (nestedField.isAnnotationPresent(UseConverter.class)) {
