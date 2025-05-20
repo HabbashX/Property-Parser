@@ -28,19 +28,20 @@ import java.math.BigInteger;
 public final class DataTypeParser {
 
     /**
-     * Parses a string value into an object of the specified type.
+     * Parses a given string value into an instance of the specified type.
      *
-     * This method supports a variety of primitive and common wrapper types, including {@code int}, {@code float},
-     * {@code double}, {@code boolean}, {@code long}, {@code short}, their corresponding wrapper classes, and {@code String}.
+     * This method converts the input string into an object of the requested type, supporting primitive
+     * types, their wrapper classes, and some additional data types such as BigInteger and BigDecimal.
      * If the specified type is unsupported, an {@code UnSupportedTypeException} is thrown.
      *
-     * @param type  The class of the type into which the value should be parsed.
-     *              Must be a valid class such as a primitive, wrapper, or {@code String}.
-     * @param value The string value to be parsed into the specified type.
-     *              This value must be compatible with the expected type.
-     * @return The parsed object of the specified type. Never null.
-     * @throws UnSupportedTypeException If the specified type is not supported for parsing.
-     */
+     * @param type  The class type into which the value should be parsed. This type must not be null
+     *              and should represent one of the supported data types, such as primitive types,
+     *              their wrapper classes, {@code String}, {@code BigInteger}, {@code BigDecimal},
+     *              or other custom types handled by an {@code ObjectParser}.
+     * @param value The string value to be parsed. This value is expected to be suitable for conversion
+     *              to the requested type, depending on its format and constraints of the type.
+     * @return The parsed object, which is an instance of the specified type. If the type is
+     *         unsupported or the value cannot be parsed,*/
     public static @NotNull Object parse(Class<?> type , String value) {
 
         if (type == int.class|| type == Integer.class) {
