@@ -10,9 +10,9 @@ import com.habbashx.annotation.InjectProperty;
 import com.habbashx.annotation.Required;
 import com.habbashx.converter.PropertyConverter;
 import com.habbashx.decryptor.PropertyDecryptor;
-import com.habbashx.parser.DataTypeParser;
 import com.habbashx.parser.ListParser;
 
+import com.habbashx.parser.factory.ParserFactory;
 import com.habbashx.resolver.ExternalPropertyResolver;
 import com.habbashx.resolver.PlaceholderResolver;
 import com.habbashx.resolver.Resolver;
@@ -48,7 +48,7 @@ public class PropertyInjector {
      * 2. System property value matching the key.
      * 3. Environment variable matching the key.
      * If no replacement is found, the original placeholder `${key}` remains unchanged.
-     *
+     * <p>
      * This field is immutable and an instance of {@code PlaceholderResolver}, which extends
      * the base {@code Resolver} type.
      */
@@ -70,7 +70,7 @@ public class PropertyInjector {
      *             a runtime exception will be thrown.
      */
     public PropertyInjector(File file) {
-        this(new Properties(),file);
+        this(new Properties(), file);
     }
 
     /**
@@ -81,17 +81,16 @@ public class PropertyInjector {
      *                   loaded from the file
      * @param file       the File object representing the source file containing the properties
      */
-    public PropertyInjector(Properties properties,File file) {
+    public PropertyInjector(Properties properties, File file) {
         this.properties = properties;
         this.file = file;
         loadProperties();
     }
 
-
     /**
      * Injects field values into the specified target object by analyzing its fields marked
      * with specific annotations and resolving the respective properties or derived values.
-     *
+     * <p>
      * This method processes fields annotated with {@code @InjectProperty}, {@code @InjectPrefix},
      * and {@code @InjectList}. It uses the annotations to determine how to inject values,
      * resolves them accordingly, and sets their corresponding values for the fields,
@@ -102,11 +101,10 @@ public class PropertyInjector {
      * @param arguments    Additional optional arguments that may be used during the processing
      *                     of nested objects or complex injection scenarios.
      *                     Can include contextual data required for some fields based on their annotations.
-     *
      * @throws RuntimeException If an error occurs during field injection, such as an inaccessible field
      *                          or data parsing issues.
      */
-    public void inject(@NotNull Object targetObject,Object... arguments) {
+    public void inject(@NotNull Object targetObject, Object... arguments) {
         try {
             Class<?> clazz = targetObject.getClass();
 
@@ -117,7 +115,7 @@ public class PropertyInjector {
                 Object instance = isStatic ? null : targetObject;
 
                 if (field.isAnnotationPresent(InjectProperty.class)) {
-                    injectProperty(instance,field);
+                    injectProperty(instance, field);
                 } else if (field.isAnnotationPresent(InjectPrefix.class)) {
                     injectNestedProperties(targetObject, field, arguments);
                 } else if (field.isAnnotationPresent(InjectList.class)) {
@@ -137,30 +135,29 @@ public class PropertyInjector {
      * @param instance The object instance into which the property value is injected. Must not be null.
      * @param field    The field within the instance that will have the value injected. Must not be null.
      *                 It must be annotated with {@code InjectProperty}.
-     * @throws IllegalAccessException If the field is inaccessible or cannot be modified.
+     * @throws IllegalAccessException   If the field is inaccessible or cannot be modified.
      * @throws IllegalArgumentException If the property is required but missing in the configuration.
      */
     public void injectProperty(Object instance, @NotNull Field field) throws IllegalAccessException {
 
-        InjectProperty injectProperty = field.getAnnotation(InjectProperty.class);
+        final InjectProperty injectProperty = field.getAnnotation(InjectProperty.class);
 
         String rawValue = properties.getProperty(injectProperty.value());
 
         if (rawValue == null) {
             if (field.isAnnotationPresent(DefaultValue.class)) {
                 rawValue = field.getAnnotation(DefaultValue.class).value();
-            } else {
-                if (field.isAnnotationPresent(Required.class)) {
-                    throw new IllegalArgumentException("missing required property: " + injectProperty.value());
-                }
-            }
-            if (rawValue == null) {
-                return;
+            } else if (field.isAnnotationPresent(Required.class)) {
+                throw new IllegalArgumentException("missing required property: " + injectProperty.value());
             }
         }
+        if (rawValue == null) {
+            return;
+        }
         inject(field, instance, rawValue);
-
     }
+
+
     /**
      * Injects field values with a prefix into the specified target object. It leverages the `inject` method
      * to analyze annotations and resolve property values based on the provided arguments.
@@ -194,19 +191,19 @@ public class PropertyInjector {
     private void injectNestedProperties(Object targetObject,Field targetField,Object... arguments) {
 
         try {
-            InjectPrefix injectPrefix = targetField.getAnnotation(InjectPrefix.class);
-            Object nestedTarget = getOrCreate(targetField.getType(),targetField,targetObject,arguments);
-            String prefix = injectPrefix.value();
-            for (Field nestedField : nestedTarget.getClass().getDeclaredFields()) {
+            final InjectPrefix injectPrefix = targetField.getAnnotation(InjectPrefix.class);
+            final Object nestedTarget = getOrCreate(targetField.getType(),targetField,targetObject,arguments);
+            final String prefix = injectPrefix.value();
+            for (final Field nestedField : nestedTarget.getClass().getDeclaredFields()) {
 
-                boolean isStatic = Modifier.isStatic(nestedField.getModifiers());
-                Object instance = isStatic ? null:nestedTarget;
+                final boolean isStatic = Modifier.isStatic(nestedField.getModifiers());
+                final Object instance = isStatic ? null:nestedTarget;
 
                 if (nestedField.isAnnotationPresent(InjectProperty.class)) {
                     nestedField.setAccessible(true);
 
-                    InjectProperty injectProperty = nestedField.getAnnotation(InjectProperty.class);
-                    String property = prefix+"."+injectProperty.value();
+                    final InjectProperty injectProperty = nestedField.getAnnotation(InjectProperty.class);
+                    final String property = prefix+"."+injectProperty.value();
                     String rawValue = properties.getProperty(property);
 
 
@@ -221,7 +218,7 @@ public class PropertyInjector {
                             }
                         }
                     }
-                    inject(nestedField, instance, rawValue, placeholderResolver);
+                    inject(nestedField, instance, rawValue);
                 } else if (nestedField.isAnnotationPresent(InjectList.class)) {
                     injectList(instance,nestedField);
                 }
@@ -237,7 +234,7 @@ public class PropertyInjector {
      * The input value is processed through optional decryption, conversion, or default parsing based on
      * the annotations and type of the field.
      *
-     * @param nestedField        The field in the target object to be injected with the resolved value.
+     * @param field        The field in the target object to be injected with the resolved value.
      *                           This parameter must not be null and may have additional annotations
      *                           such as {@code @DecryptWith} or {@code @UseConverter} that affect
      *                           the processing of the raw value.
@@ -249,24 +246,23 @@ public class PropertyInjector {
      * @throws IllegalAccessException If the specified field cannot be written to, such as when it's inaccessible
      *                                or final.
      */
-    private void inject(@NotNull Field nestedField, Object instance, String rawValue) throws IllegalAccessException {
+    private void inject(@NotNull Field field, Object instance, String rawValue) throws IllegalAccessException {
         rawValue = externalPropertyResolver.resolve(rawValue,properties);
         rawValue = placeholderResolver.resolve(rawValue,properties);
 
-        if (nestedField.isAnnotationPresent(DecryptWith.class)) {
-            rawValue = decryptWith(nestedField,rawValue);
+        if (field.isAnnotationPresent(DecryptWith.class)) {
+            rawValue = decryptWith(field,rawValue);
         }
 
         Object convertedValue;
 
-        if (nestedField.isAnnotationPresent(UseConverter.class)) {
-            convertedValue = useConverter(nestedField,rawValue);
-        } else if (nestedField.getType().isEnum()) {
-            convertedValue = DataTypeParser.parseEnum((Class<Enum<?>>) nestedField.getType(),rawValue);
+        if (field.isAnnotationPresent(UseConverter.class)) {
+            convertedValue = useConverter(field,rawValue);
         } else {
-            convertedValue = DataTypeParser.parse(nestedField.getType(), rawValue);
+            convertedValue = ParserFactory.parse(field.getType(),rawValue);
         }
-        nestedField.set(instance,convertedValue);
+        field.setAccessible(true);
+        field.set(instance,convertedValue);
     }
 
     /**
@@ -278,12 +274,12 @@ public class PropertyInjector {
      * @throws IllegalAccessException if the field cannot be accessed or modified
      */
     private void injectList(Object instance,@NotNull Field field) throws IllegalAccessException {
-        InjectList injectList = field.getAnnotation(InjectList.class);
-        Type genericsType = field.getGenericType();
+        final InjectList injectList = field.getAnnotation(InjectList.class);
+        final Type genericsType = field.getGenericType();
 
-        if (genericsType instanceof ParameterizedType parameterizedType) {
-            Type paramType = parameterizedType.getActualTypeArguments()[0];
-            String rawValue = properties.getProperty(injectList.value());
+        if (genericsType instanceof final ParameterizedType parameterizedType) {
+            final Type paramType = parameterizedType.getActualTypeArguments()[0];
+            final String rawValue = properties.getProperty(injectList.value());
             final List<Object> list = ListParser.parseList(rawValue,paramType);
             field.set(instance,list);
         }
@@ -307,16 +303,15 @@ public class PropertyInjector {
      *                          such as reflection-related issues or instantiation problems.
      */
     @Contract(pure = true)
-    @SuppressWarnings("unchecked")
     private String decryptWith(@NotNull Field field , String encryptedValue) {
 
         try {
-            DecryptWith decryptWith = field.getAnnotation(DecryptWith.class);
+            final DecryptWith decryptWith = field.getAnnotation(DecryptWith.class);
 
-            Constructor<? extends DecryptWith> constructor = (Constructor<? extends DecryptWith>) decryptWith.value().getDeclaredConstructor();
+            final Constructor<? extends DecryptWith> constructor = (Constructor<? extends DecryptWith>) decryptWith.value().getDeclaredConstructor();
             constructor.setAccessible(true);
 
-            PropertyDecryptor propertyDecryptor = (PropertyDecryptor) constructor.newInstance();
+            final PropertyDecryptor propertyDecryptor = (PropertyDecryptor) constructor.newInstance();
 
             return propertyDecryptor.decrypt(encryptedValue);
         } catch (Exception e) {
@@ -346,16 +341,15 @@ public class PropertyInjector {
      *                          invalid constructor, or unexpected exception in the converter.
      */
     @Contract(pure = true)
-    @SuppressWarnings("unchecked")
     private Object useConverter(@NotNull Field field ,String rawValue) {
 
         try {
             final UseConverter converter = field.getAnnotation(UseConverter.class);
 
-            Constructor<? extends UseConverter> constructor = (Constructor<? extends UseConverter>) converter.value().getDeclaredConstructor();
+            final Constructor<? extends UseConverter> constructor = (Constructor<? extends UseConverter>) converter.value().getDeclaredConstructor();
             constructor.setAccessible(true);
 
-            PropertyConverter<?> propertyConverter = (PropertyConverter<?>) constructor.newInstance();
+            final PropertyConverter<?> propertyConverter = (PropertyConverter<?>) constructor.newInstance();
 
             return propertyConverter.convert(rawValue);
         } catch (Exception e) {
@@ -407,7 +401,7 @@ public class PropertyInjector {
      * @param comment    a comment to include in the properties file, can be null
      */
     private void store(String key,String newValue ,String comment){
-        try (OutputStream outputStream = new FileOutputStream(file)) {
+        try (final OutputStream outputStream = new FileOutputStream(file)) {
             properties.setProperty(key, newValue);
             properties.store(outputStream, comment);
         } catch (IOException e) {

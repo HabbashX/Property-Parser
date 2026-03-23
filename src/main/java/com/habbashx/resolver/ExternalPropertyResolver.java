@@ -75,11 +75,11 @@ public final class ExternalPropertyResolver extends Resolver {
         }
 
         @Language("RegExp")
-        String []parts = value.split(":");
+        String []parts = value.split(":\\[");
 
         if (parts.length <= 2) {
             String fileName = parts[0];
-            int lastIndex = fileName.indexOf(">");
+            int lastIndex = fileName.indexOf("]");
 
             if (lastIndex != -1) {
                 String extractedFileName = fileName.substring(1, lastIndex);

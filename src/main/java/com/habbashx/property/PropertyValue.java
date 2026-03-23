@@ -52,7 +52,7 @@ public class PropertyValue implements Serializable {
         if (this == object) return true;
         if (object == null || getClass() != object.getClass()) return false;
 
-        PropertyValue that = (PropertyValue) object;
+        final PropertyValue that = (PropertyValue) object;
         return Objects.equals(rawValue, that.rawValue) && Objects.equals(convertedValue, that.convertedValue);
     }
 

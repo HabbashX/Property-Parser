@@ -56,7 +56,7 @@ public interface PropertyValidator {
      static @NotNull PropertyValidator integerRange(int minimum , int maximum) {
          return value -> {
              try {
-                 int intValue = Integer.parseInt(value);
+                 final int intValue = Integer.parseInt(value);
                  return intValue >= minimum && intValue <= maximum;
              } catch (NumberFormatException ignored) {
                  return false;

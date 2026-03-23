@@ -48,16 +48,16 @@ public final class PlaceholderResolver extends Resolver {
 
         if (value.isEmpty()) return value;
 
-        StringBuilder result = new StringBuilder();
-        Matcher matcher = PATTERN.matcher(value);
+        final StringBuilder result = new StringBuilder();
+        final Matcher matcher = PATTERN.matcher(value);
 
         int lastEnd = 0;
         while (matcher.find()) {
             result.append(value, lastEnd, matcher.start());
 
-            String key = matcher.group(1);
+            final String key = matcher.group(1);
 
-            String replacement = getReplacement(key, properties);
+            final String replacement = getReplacement(key, properties);
 
             result.append(replacement);
             lastEnd = matcher.end();

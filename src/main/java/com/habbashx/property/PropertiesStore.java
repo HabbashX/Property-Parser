@@ -62,7 +62,7 @@ public class PropertiesStore implements Serializable {
      * @return the raw value of the property as a {@code String}, or {@code null} if no property exists for the given key
      */
     public String getRawValue(String key) {
-        PropertyElement propertyElement = propertyElements.get(key);
+        final PropertyElement propertyElement = propertyElements.get(key);
         if (propertyElement != null) {
             return propertyElement.getPropertyValue().getRawValue();
         }
@@ -77,7 +77,7 @@ public class PropertiesStore implements Serializable {
      * @return the converted value of the property as an {@code Object}, or {@code null} if no property exists for the given key
      */
     public Object getConvertedValue(String key) {
-        PropertyElement propertyElement = propertyElements.get(key);
+        final PropertyElement propertyElement = propertyElements.get(key);
         if (propertyElement != null) {
             return propertyElement.getPropertyValue().getConvertedValue();
         }
@@ -95,9 +95,9 @@ public class PropertiesStore implements Serializable {
      *         or {@code null} if the property associated with the given key does not exist
      */
     public <T> T getConvertedValue(String key, Class<T> type) {
-        PropertyElement propertyElement = propertyElements.get(key);
+        final PropertyElement propertyElement = propertyElements.get(key);
         if (propertyElement != null) {
-            Object convertedValue = propertyElement.getPropertyValue().getConvertedValue();
+            final Object convertedValue = propertyElement.getPropertyValue().getConvertedValue();
             return type.cast(convertedValue);  // Safely cast to the requested type
         }
         return null;
@@ -195,7 +195,7 @@ public class PropertiesStore implements Serializable {
      * @param newRawValue the new raw value to set for the property
      */
     public void updateRawValue(String key, String newRawValue) {
-        PropertyElement propertyElement = propertyElements.get(key);
+        final PropertyElement propertyElement = propertyElements.get(key);
         if (propertyElement != null) {
             propertyElement.getPropertyValue().setRawValue(newRawValue);
         }
@@ -209,7 +209,7 @@ public class PropertiesStore implements Serializable {
      * @param newConvertedValue the new converted value to set for the property
      */
     public void updateConvertedValue(String key, Object newConvertedValue) {
-        PropertyElement propertyElement = propertyElements.get(key);
+        final PropertyElement propertyElement = propertyElements.get(key);
         if (propertyElement != null) {
             propertyElement.getPropertyValue().setConvertedValue(newConvertedValue);
         }

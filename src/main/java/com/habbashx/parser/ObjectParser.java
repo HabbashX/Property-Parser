@@ -31,7 +31,7 @@ public class ObjectParser {
      */
     public static @Unmodifiable @Nullable Object parseObject(String objectFile) {
         try {
-            ObjectInputStream ois = new ObjectInputStream(new FileInputStream(objectFile));
+            final ObjectInputStream ois = new ObjectInputStream(new FileInputStream(objectFile));
             return ois.readObject();
         } catch (Exception ignored) {
             return null;

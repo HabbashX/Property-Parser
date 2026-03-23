@@ -18,7 +18,7 @@ import java.util.Properties;
  * an associated {@link PropertiesStore}. It integrates with Java's {@link Properties}
  * system to persist and restore property configurations.
  */
-public class PropertiesManager {
+public class PropertyManager {
 
     /**
      * An immutable and final instance of `PropertiesStore` that acts as a container
@@ -42,11 +42,21 @@ public class PropertiesManager {
     private final File file;
     private final Properties properties = new Properties();
 
-    public PropertiesManager(PropertiesStore propertiesStore , File file) {
+
+    public PropertyManager(String targetFile) {
+        this(new File(targetFile));
+    }
+
+    public PropertyManager(File file) {
+        this(new PropertiesStore(), file);
+    }
+
+    public PropertyManager(PropertiesStore propertiesStore , File file) {
         this.propertiesStore = propertiesStore;
         this.file = file;
         loadProperties();
     }
+
 
     /**
      * Persists the current property values from the {@code PropertiesStore} into the internal
@@ -100,7 +110,7 @@ public class PropertiesManager {
      * @throws RuntimeException if an {@code IOException} occurs during the saving process
      */
     public void storeProperties(String comments) {
-        try (OutputStream outputStream = new FileOutputStream(file)) {
+        try (final OutputStream outputStream = new FileOutputStream(file)) {
             properties.store(outputStream,comments);
         } catch (IOException e) {
             throw new RuntimeException(e);
@@ -123,15 +133,15 @@ public class PropertiesManager {
      * - RuntimeException if an IOException is encountered while reading the properties file.
      */
     public void loadProperties() {
-        try (InputStream inputStream = new FileInputStream(file)) {
+        try (final InputStream inputStream = new FileInputStream(file)) {
             properties.load(inputStream);
 
             propertiesStore.getPropertyElements().clear();
 
-            for (String key : properties.stringPropertyNames()) {
-                String rawValue = properties.getProperty(key);
-                PropertyValue value = new PropertyValue(rawValue);
-                PropertyElement propertyElement = new PropertyElement(key,value);
+            for (final String key : properties.stringPropertyNames()) {
+                final String rawValue = properties.getProperty(key);
+                final PropertyValue value = new PropertyValue(rawValue);
+                final PropertyElement propertyElement = new PropertyElement(key,value);
                 propertiesStore.addProperty(key,value);
             }
         } catch (IOException e){

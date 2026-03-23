@@ -42,12 +42,12 @@ public final class ListParser {
     public static @Unmodifiable List<Object> parseList(@NotNull String rawValue, Type parameterizedType) {
 
         @Language("RegExp")
-        String[] items = rawValue.split(",");
+        final String[] items = rawValue.split(",");
 
         if (items.length > 0) {
 
             return Arrays.stream(items).map(item -> {
-                String trimmedItem = item.trim();
+                final String trimmedItem = item.trim();
 
                 if (!trimmedItem.isEmpty() || !trimmedItem.isBlank()) {
                     if (parameterizedType == String.class) {
