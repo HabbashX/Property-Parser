@@ -1,4 +1,4 @@
-# 🛠️ Property Parser 1.1
+# 🛠️ Property Parser 1.1.3
 
 A flexible and powerful Java library to load, validate, and manage application properties with advanced features like type conversion, validation rules, dynamic file references, and more.
 
