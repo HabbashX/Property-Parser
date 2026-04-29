@@ -13,13 +13,73 @@ A flexible and powerful Java library to load, validate, and manage application p
 - 🔄 Support for referencing properties from external files (e.g., `file.properties:some.key`)
 ---
 
----
-## ✨New Features
-- 🧩 Property Parser now supports BigDecimal and BigInteger
-- 🧩 now you can inject an instance of any serialized object into target field just by define the file name that the serialized object been stored in. (example.properties = object.dat)
+# 🧠 Code Enhancements & Improvements
+
+## ⚡ Performance Optimizations
+- Introduced `ReflectionCache` to cache declared fields per class.
+- Reduced repeated reflection calls significantly.
+- Improved injection speed by avoiding redundant metadata lookups.
 
 ---
 
+## 🏗 Architecture Improvements
+- Refactored system into **registry-based design**:
+    - `PropertyConverterRegistry`
+    - `PropertyDecryptorRegistry`
+    - `ResolverRegistry`
+- Clear separation of concerns between:
+    - parsing
+    - conversion
+    - decryption
+    - resolution
+
+---
+
+## 🔁 Converter System Upgrade
+- Redesigned converter system to support:
+    - generic `PropertyConverter<T>`
+    - runtime-safe conversion with target type awareness
+- Added automatic fallback instantiation for missing converters
+- Improved type safety in conversion pipeline
+
+---
+
+## 🔐 Decryptor System Improvements
+- Improved decryptor handling with centralized registry.
+- Auto-instantiation support when decryptor is not registered.
+- Cleaner annotation-driven flow using `@DecryptWith`.
+
+---
+
+## 🔄 Parser System Enhancements
+- Improved `ParserFactory` fallback chain:
+    - primitives + wrappers
+    - enums
+    - constructors with `String`
+    - object fallback parsing
+- Better handling of unsupported types with controlled exception flow.
+
+---
+
+## 🧩 Resolver System Upgrade
+- Introduced `ResolverRegistry` for multi-resolver support.
+- Supports chained resolution of values before injection.
+- More flexible preprocessing pipeline for property values.
+
+---
+
+## 🧬 Design Improvements
+- Moved from tightly-coupled injection logic → modular pipeline design.
+- Each feature now operates independently via registry injection.
+- Cleaner extensibility without modifying core injector logic.
+
+---
+
+## 🚀 Overall Improvements
+- Reduced reflection overhead
+- Improved modularity and maintainability
+- Better separation between parsing, conversion, and resolution
+- More extensible design for future plugins and extensions
 ## 📦 Installation
 ```
   <dependency>
@@ -99,3 +159,6 @@ class PrefixExample {
 
 }
 ```
+
+# Version
+1.1.2
