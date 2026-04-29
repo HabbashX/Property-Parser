@@ -1,28 +1,29 @@
 package com.habbashx.converter;
 
 /**
- * Defines a contract for converting a string representation of a value into
- * a specific type.
+ * Generic contract for converting raw configuration values into typed objects.
  *
- * This interface is implemented by classes that handle the conversion of raw string
- * input into a desired object type. The conversion logic is encapsulated in the
- * {@code convert} method, which takes a string value as input and transforms it into
- * an object of the specified type {@code T}.
+ * <p>
+ * This interface is used by the property injection system to transform
+ * string-based property values into strongly-typed Java objects.
+ * </p>
  *
- * @param <T> The type of the object to which the value will be converted.
+ * <p>
+ * Implementations can define custom parsing logic for specific types
+ * such as enums, complex objects, or formatted strings.
+ * </p>
+ *
+ * @param <T> the target type produced by this converter
  */
 public interface PropertyConverter<T> {
+
     /**
-     * Converts the given string value into an object of type {@code T}.
+     * Converts a raw string value into a strongly-typed object.
      *
-     * This method takes a {@code String} input and performs a type conversion
-     * to produce an object of the specified type {@code T}. The actual
-     * conversion logic is implemented by the class that provides the
-     * specific implementation of this method.
-     *
-     * @param value The string value to be converted. Can be null or in a specific
-     *              format required by the conversion implementation.
-     * @return The converted object of type {@code T}.
+     * @param type the target class type expected as output (useful for generic handling)
+     * @param rawValue the raw string value from the property source
+     * @return the converted value of type {@code T}
+     * @throws RuntimeException if conversion fails or the value is invalid
      */
-    T convert(String value);
+    T convert(Class<?> type, String rawValue);
 }
