@@ -9,23 +9,22 @@ import com.habbashx.annotation.DecryptWith;
 import com.habbashx.annotation.InjectProperty;
 import com.habbashx.annotation.Required;
 import com.habbashx.converter.PropertyConverter;
+import com.habbashx.converter.registry.PropertyConverterRegistry;
 import com.habbashx.decryptor.PropertyDecryptor;
+import com.habbashx.decryptor.registry.PropertyDecryptorRegistry;
+import com.habbashx.injector.reflection.cache.ReflectionCache;
+import com.habbashx.injector.source.FilePropertySource;
+import com.habbashx.injector.source.PropertySource;
 import com.habbashx.parser.ListParser;
 
 import com.habbashx.parser.factory.ParserFactory;
-import com.habbashx.resolver.ExternalPropertyResolver;
-import com.habbashx.resolver.PlaceholderResolver;
 import com.habbashx.resolver.Resolver;
+import com.habbashx.resolver.registry.ResolverRegistry;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.lang.reflect.Constructor;
+
 import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
 import java.lang.reflect.ParameterizedType;
@@ -33,82 +32,98 @@ import java.lang.reflect.Type;
 import java.util.List;
 import java.util.Properties;
 
-@SuppressWarnings("unchecked")
+/**
+ * <h1>PropertyInjector</h1>
+ *
+ * A lightweight annotation-based property injection engine.
+ *
+ * <p>This class scans target objects using reflection and injects values
+ * from a property source into fields using annotations such as:</p>
+ *
+ * <ul>
+ *     <li>{@link InjectProperty}</li>
+ *     <li>{@link InjectPrefix}</li>
+ *     <li>{@link InjectList}</li>
+ *     <li>{@link UseConverter}</li>
+ *     <li>{@link DecryptWith}</li>
+ * </ul>
+ *
+ * <p>It supports:</p>
+ * <ul>
+ *     <li>Nested object injection</li>
+ *     <li>Custom type converters</li>
+ *     <li>Decryptors</li>
+ *     <li>Resolver pipeline</li>
+ *     <li>List parsing</li>
+ * </ul>
+ */
 public class PropertyInjector {
 
-    private final Properties properties;
-    private final File file;
+    /** Source of all property values (file, memory, etc.) */
+    private final PropertySource propertySource;
+
+    /** Registry for converting raw strings into custom types */
+    private final PropertyConverterRegistry propertyConverterRegistry;
+
+    /** Registry for decrypting encrypted property values */
+    private final PropertyDecryptorRegistry propertyDecryptorRegistry;
+
+    /** Cache for reflection fields to improve performance */
+    private final ReflectionCache reflectionCache;
+
+    /** Pipeline registry for resolving placeholders and external values */
+    private final ResolverRegistry resolverRegistry;
 
     /**
-     * A resolver instance used to process and replace placeholders within property values.
-     * This resolver operates by identifying placeholders in the format `${key}` and replacing
-     * them with corresponding values from a set of defined properties. It prioritizes replacement
-     * in the following order:
-     * 1. Value from provided `Properties` object.
-     * 2. System property value matching the key.
-     * 3. Environment variable matching the key.
-     * If no replacement is found, the original placeholder `${key}` remains unchanged.
-     * <p>
-     * This field is immutable and an instance of {@code PlaceholderResolver}, which extends
-     * the base {@code Resolver} type.
-     */
-    private final Resolver placeholderResolver = new PlaceholderResolver();
-    /**
-     * A final instance of the {@code Resolver} type used to resolve external properties.
-     * This variable is initialized with an instance of {@code ExternalPropertyResolver},
-     * which provides the logic for managing or retrieving properties from external sources.
-     * It is immutable once assigned and ensures consistent external property resolution across usage.
-     */
-    private final Resolver externalPropertyResolver = new ExternalPropertyResolver();
-
-    /**
-     * Constructs a new instance of the PropertyInjector class using the specified file.
-     * This constructor initializes a new {@link Properties} object and loads properties from the file.
+     * Creates a PropertyInjector using a property file.
      *
-     * @param file The file containing the property definitions to be loaded.
-     *             It is expected that the file exists and is readable. If the file cannot be read or does not exist,
-     *             a runtime exception will be thrown.
+     * @param file property file source
      */
     public PropertyInjector(File file) {
-        this(new Properties(), file);
+        this(
+                new FilePropertySource(file),
+                new PropertyConverterRegistry(),
+                new PropertyDecryptorRegistry(),
+                new ReflectionCache(),
+                new ResolverRegistry()
+        );
     }
 
     /**
-     * Constructs a PropertyInjector instance that reads properties from the specified file
-     * and initializes the provided Properties object.
+     * Full constructor with dependency injection.
      *
-     * @param properties the Properties object to be initialized and populated with values
-     *                   loaded from the file
-     * @param file       the File object representing the source file containing the properties
+     * @param propertySource property source implementation
+     * @param propertyConverterRegistry converter registry
+     * @param propertyDecryptorRegistry decryptor registry
+     * @param reflectionCache cached reflection access
+     * @param resolverRegistry resolver pipeline registry
      */
-    public PropertyInjector(Properties properties, File file) {
-        this.properties = properties;
-        this.file = file;
-        loadProperties();
+    public PropertyInjector(PropertySource propertySource,
+                            PropertyConverterRegistry propertyConverterRegistry,
+                            PropertyDecryptorRegistry propertyDecryptorRegistry,
+                            ReflectionCache reflectionCache,
+                            ResolverRegistry resolverRegistry
+    ) {
+        this.propertySource = propertySource;
+        this.propertyConverterRegistry = propertyConverterRegistry;
+        this.propertyDecryptorRegistry = propertyDecryptorRegistry;
+        this.reflectionCache = reflectionCache;
+        this.resolverRegistry = resolverRegistry;
     }
 
     /**
-     * Injects field values into the specified target object by analyzing its fields marked
-     * with specific annotations and resolving the respective properties or derived values.
-     * <p>
-     * This method processes fields annotated with {@code @InjectProperty}, {@code @InjectPrefix},
-     * and {@code @InjectList}. It uses the annotations to determine how to inject values,
-     * resolves them accordingly, and sets their corresponding values for the fields,
-     * taking into consideration the annotations' behavior.
+     * Injects values into the given target object.
      *
-     * @param targetObject The object whose fields should be injected with resolved properties.
-     *                     This parameter cannot be null.
-     * @param arguments    Additional optional arguments that may be used during the processing
-     *                     of nested objects or complex injection scenarios.
-     *                     Can include contextual data required for some fields based on their annotations.
-     * @throws RuntimeException If an error occurs during field injection, such as an inaccessible field
-     *                          or data parsing issues.
+     * <p>Scans all fields and applies injection rules based on annotations.</p>
+     *
+     * @param targetObject object to inject values into
+     * @param arguments optional arguments for nested injection
      */
     public void inject(@NotNull Object targetObject, Object... arguments) {
         try {
             Class<?> clazz = targetObject.getClass();
 
-            for (Field field : clazz.getDeclaredFields()) {
+            for (Field field : reflectionCache.getFields(clazz)) {
 
                 field.setAccessible(true);
                 boolean isStatic = Modifier.isStatic(field.getModifiers());
@@ -142,7 +157,7 @@ public class PropertyInjector {
 
         final InjectProperty injectProperty = field.getAnnotation(InjectProperty.class);
 
-        String rawValue = properties.getProperty(injectProperty.value());
+        String rawValue = propertySource.get(injectProperty.value());
 
         if (rawValue == null) {
             if (field.isAnnotationPresent(DefaultValue.class)) {
@@ -204,7 +219,7 @@ public class PropertyInjector {
 
                     final InjectProperty injectProperty = nestedField.getAnnotation(InjectProperty.class);
                     final String property = prefix+"."+injectProperty.value();
-                    String rawValue = properties.getProperty(property);
+                    String rawValue = propertySource.get(property);
 
 
                     if (rawValue == null) {
@@ -247,8 +262,7 @@ public class PropertyInjector {
      *                                or final.
      */
     private void inject(@NotNull Field field, Object instance, String rawValue) throws IllegalAccessException {
-        rawValue = externalPropertyResolver.resolve(rawValue,properties);
-        rawValue = placeholderResolver.resolve(rawValue,properties);
+        rawValue = resolverRegistry.resolve(rawValue,propertySource.getAll());
 
         if (field.isAnnotationPresent(DecryptWith.class)) {
             rawValue = decryptWith(field,rawValue);
@@ -279,7 +293,7 @@ public class PropertyInjector {
 
         if (genericsType instanceof final ParameterizedType parameterizedType) {
             final Type paramType = parameterizedType.getActualTypeArguments()[0];
-            final String rawValue = properties.getProperty(injectList.value());
+            final String rawValue = propertySource.get(injectList.value());
             final List<Object> list = ListParser.parseList(rawValue,paramType);
             field.set(instance,list);
         }
@@ -307,13 +321,7 @@ public class PropertyInjector {
 
         try {
             final DecryptWith decryptWith = field.getAnnotation(DecryptWith.class);
-
-            final Constructor<? extends DecryptWith> constructor = (Constructor<? extends DecryptWith>) decryptWith.value().getDeclaredConstructor();
-            constructor.setAccessible(true);
-
-            final PropertyDecryptor propertyDecryptor = (PropertyDecryptor) constructor.newInstance();
-
-            return propertyDecryptor.decrypt(encryptedValue);
+            return propertyDecryptorRegistry.decrypt(decryptWith.value(),encryptedValue);
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
@@ -346,12 +354,7 @@ public class PropertyInjector {
         try {
             final UseConverter converter = field.getAnnotation(UseConverter.class);
 
-            final Constructor<? extends UseConverter> constructor = (Constructor<? extends UseConverter>) converter.value().getDeclaredConstructor();
-            constructor.setAccessible(true);
-
-            final PropertyConverter<?> propertyConverter = (PropertyConverter<?>) constructor.newInstance();
-
-            return propertyConverter.convert(rawValue);
+            return propertyConverterRegistry.convert(converter.value(),field.getType(),rawValue);
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
@@ -393,43 +396,57 @@ public class PropertyInjector {
         }
     }
 
-    /**
-     * Stores a key-value property with an optional comment into a properties file.
-     *
-     * @param key        the key to be stored in the properties file
-     * @param newValue   the value associated with the specified key
-     * @param comment    a comment to include in the properties file, can be null
-     */
-    private void store(String key,String newValue ,String comment){
-        try (final OutputStream outputStream = new FileOutputStream(file)) {
-            properties.setProperty(key, newValue);
-            properties.store(outputStream, comment);
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
+    @Contract(" -> new")
+    public static @NotNull PropertyInjectorBuilder injectorBuilder() {
+        return new PropertyInjectorBuilder();
     }
 
+
     /**
-     * Loads properties from a file into the {@code properties} object.
-     *
-     * This method attempts to open the file specified by the {@code file}
-     * field and read its contents into the {@code properties} object.
-     * If the file cannot be opened or read due to an I/O error, a
-     * {@code RuntimeException} is thrown encapsulating the original exception.
-     *
-     * The method ensures that the input stream is properly closed after
-     * the properties are loaded, using a try-with-resources block.
-     *
-     * Throws:
-     * - {@code RuntimeException} if an {@code IOException} occurs while
-     *   reading the properties file.
+     * Builder for configuring PropertyInjector.
      */
-    public void loadProperties() {
-        try (InputStream inputStream = new FileInputStream(file)) {
-            properties.load(inputStream);
-        } catch (IOException e) {
-            throw new RuntimeException(e);
+    public static class PropertyInjectorBuilder {
+
+        private PropertySource propertySource;
+
+        private final PropertyConverterRegistry propertyConverterRegistry = new PropertyConverterRegistry();
+        private final PropertyDecryptorRegistry propertyDecryptorRegistry = new PropertyDecryptorRegistry();
+        private final ResolverRegistry resolverRegistry = new ResolverRegistry();
+
+        /** Sets property source file */
+        public PropertyInjectorBuilder propertySource(File file) {
+            propertySource = new FilePropertySource(file);
+            return this;
+        }
+
+        /** Registers converter */
+        public <T> PropertyInjectorBuilder propertyConverter(Class<? extends PropertyConverter<T>> type , PropertyConverter<T> propertyConverter) {
+            propertyConverterRegistry.register(type,propertyConverter);
+            return this;
+        }
+
+        /** Registers decryptor */
+        public <T> PropertyInjectorBuilder propertyDecryptor(Class<? extends PropertyDecryptor> type,PropertyDecryptor propertyDecryptor) {
+            propertyDecryptorRegistry.register(type,propertyDecryptor);
+            return this;
+        }
+
+        /** Registers resolver */
+        public PropertyInjectorBuilder resolver(Resolver resolver) {
+            resolverRegistry.register(resolver);
+            return this;
+        }
+
+        /** Builds injector */
+        public PropertyInjector build() {
+            return new PropertyInjector(
+                    propertySource,
+                    propertyConverterRegistry,
+                    propertyDecryptorRegistry,
+                    new ReflectionCache(),
+                    resolverRegistry
+            );
         }
     }
-
 }
+
