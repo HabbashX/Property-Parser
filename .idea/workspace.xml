@@ -9,42 +9,48 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="08ae466d-114a-4c60-98bd-3fe301f875bf" name="Changes" comment="Add comprehensive class-level and method-level Javadoc comments  &#10;&#10;Included detailed descriptions and annotations for various classes and methods across the project to enhance code readability, maintainability, and ease of understanding. These changes provide clear explanations of purpose, parameters, return values, and usage guidelines for key components.">
+    <list default="true" id="08ae466d-114a-4c60-98bd-3fe301f875bf" name="Changes" comment="new Version">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/property_parser_jar/property-parser.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/habbashx/annotation/InjectProperty.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/habbashx/annotation/InjectProperty.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/habbashx/injector/PropertyInjector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/habbashx/injector/PropertyInjector.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/habbashx/parser/DataTypeParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/habbashx/parser/DataTypeParser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/habbashx/resolver/ExternalPropertyResolver.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/habbashx/resolver/ExternalPropertyResolver.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/habbashx/exception/EmptyItemException.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/habbashx/exception/EmptyItemException.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/habbashx/exception/EmptyListException.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/habbashx/exception/EmptyListException.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/habbashx/exception/InvalidEnumerationValueException.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/habbashx/exception/InvalidEnumerationValueException.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/habbashx/exception/UnSupportedTypeException.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/habbashx/exception/UnSupportedTypeException.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/habbashx/injector/reflection/cache/ReflectionCache.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/habbashx/parser/DataTypeParser.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/habbashx/parser/factory/ValueParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/habbashx/parser/factory/ValueParser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/habbashx/converter/PropertyConverter.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/habbashx/converter/PropertyConverter.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/habbashx/injector/PropertyInjector.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/habbashx/injector/PropertyInjector.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/habbashx/manager/PropertiesManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/habbashx/manager/PropertiesManager.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/habbashx/parser/DataTypeParser.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/habbashx/parser/DataTypeParser.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/habbashx/manager/PropertiesManager.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/habbashx/parser/DataTypeParser.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/habbashx/parser/ListParser.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/habbashx/parser/ListParser.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/habbashx/property/PropertiesStore.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/habbashx/property/PropertiesStore.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/habbashx/property/PropertyElement.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/habbashx/property/PropertyElement.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/habbashx/property/PropertyValue.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/habbashx/property/PropertyValue.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/habbashx/resolver/ExternalPropertyResolver.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/habbashx/resolver/ExternalPropertyResolver.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/habbashx/resolver/PlaceholderResolver.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/habbashx/resolver/PlaceholderResolver.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/habbashx/resolver/Resolver.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/habbashx/resolver/Resolver.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/habbashx/validation/PropertyValidator.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/habbashx/validation/PropertyValidator.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/module-info.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/module-info.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-archiver/pom.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/property-parser-1.0.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/createdFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="CopilotPersistence">
+    <persistenceIdMap>
+      <entry key="_C:/Users/abo.dalal.laptop/Desktop/projects/property-parser" value="2voYwg2o5OqCX4IUcGgLMiCFLgp" />
+    </persistenceIdMap>
+  </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="AnnotationType" />
         <option value="Exception" />
         <option value="package-info" />
         <option value="module-info" />
+        <option value="AnnotationType" />
         <option value="Class" />
       </list>
     </option>
@@ -69,6 +75,9 @@
     &quot;accountId&quot;: &quot;9ef3b5a0-b3a8-4a4e-9054-a9fb770c4a9b&quot;
   }
 }</component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="jar://$PROJECT_DIR$/../../../../../Program Files/Java/jdk-17/lib/src.zip!/java.base/java/lang/Class.java" root0="SKIP_INSPECTION" />
+  </component>
   <component name="ProblemsViewState">
     <option name="selectedTabId" value="CurrentFile" />
   </component>
@@ -76,7 +85,7 @@
   &quot;associatedIndex&quot;: 1
 }</component>
   <component name="ProjectId" id="2voYwg2o5OqCX4IUcGgLMiCFLgp" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+  <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="1" id="Add" />
   </component>
   <component name="ProjectViewState">
@@ -89,7 +98,25 @@
     &quot;Application.Main (1).executor&quot;: &quot;Run&quot;,
     &quot;Application.Main.executor&quot;: &quot;Run&quot;,
     &quot;Application.Man.executor&quot;: &quot;Run&quot;,
+    &quot;Application.Testing.executor&quot;: &quot;Run&quot;,
+    &quot;Maven.property-parser [clean,-DforkCount=0...].executor&quot;: &quot;Debug&quot;,
+    &quot;Maven.property-parser [clean,install].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.property-parser [clean].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.property-parser [compile].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.property-parser [deploy].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.property-parser [install].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.property-parser [org.apache.maven.plugins:maven-clean-plugin:3.2.0:clean].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.property-parser [org.apache.maven.plugins:maven-install-plugin:3.1.2:help].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.property-parser [org.apache.maven.plugins:maven-install-plugin:3.1.2:install-file].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.property-parser [org.apache.maven.plugins:maven-install-plugin:3.1.2:install].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.property-parser [package].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.property-parser [site].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.property-parser [test].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.property-parser [verify].executor&quot;: &quot;Run&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;master&quot;,
     &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
@@ -99,10 +126,10 @@
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Artifacts&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;editor.preferences.fonts.default&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
@@ -111,7 +138,20 @@
       <recent name="C:\Users\abo.dalal.laptop\Desktop\projects\property-parser\src\main\java\com\habbashx" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.D">
+  <component name="RunManager" selected="Application.Testing">
+    <configuration name="D" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.habbashx.D" />
+      <module name="property-parser" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.habbashx.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="D" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.habbashx.D" />
       <module name="property-parser" />
@@ -141,12 +181,33 @@
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.habbashx.Main" />
       <module name="property-parser" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.habbashx.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.habbashx.Main" />
+      <module name="property-parser" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Testing" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Testing" />
+      <module name="property-parser" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.Testing" />
         <item itemvalue="Application.D" />
         <item itemvalue="Application.Main" />
       </list>
@@ -155,8 +216,8 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-jdk-9823dce3aa75-28b599e66164-intellij.indexing.shared.core-IU-242.23339.11" />
-        <option value="bundled-js-predefined-d6986cc7102b-5c90d61e3bab-JavaScript-IU-242.23339.11" />
+        <option value="bundled-jdk-30f59d01ecdd-2fc7cc6b9a17-intellij.indexing.shared.core-IU-253.31033.145" />
+        <option value="bundled-js-predefined-d6986cc7102b-9b0f141eb926-JavaScript-IU-253.31033.145" />
       </set>
     </attachedChunks>
   </component>
@@ -176,7 +237,46 @@
       <workItem from="1747396375005" duration="1281000" />
       <workItem from="1747658602646" duration="17000" />
       <workItem from="1747660382619" duration="2846000" />
-      <workItem from="1747681277133" duration="1531000" />
+      <workItem from="1747681277133" duration="2374000" />
+      <workItem from="1747736347990" duration="422000" />
+      <workItem from="1747736827548" duration="105000" />
+      <workItem from="1747737602980" duration="1265000" />
+      <workItem from="1747757629507" duration="34000" />
+      <workItem from="1748626090353" duration="64000" />
+      <workItem from="1749317444723" duration="659000" />
+      <workItem from="1749319351727" duration="10000" />
+      <workItem from="1749376149667" duration="4398000" />
+      <workItem from="1749381471238" duration="104000" />
+      <workItem from="1749465892821" duration="933000" />
+      <workItem from="1749751092287" duration="43000" />
+      <workItem from="1749751220781" duration="45000" />
+      <workItem from="1749751307140" duration="683000" />
+      <workItem from="1749921249075" duration="687000" />
+      <workItem from="1749921960201" duration="20000" />
+      <workItem from="1749922350108" duration="200000" />
+      <workItem from="1750248741763" duration="1004000" />
+      <workItem from="1750249812559" duration="709000" />
+      <workItem from="1750326481477" duration="17000" />
+      <workItem from="1750526476901" duration="254000" />
+      <workItem from="1750529079559" duration="5000" />
+      <workItem from="1752055980190" duration="25000" />
+      <workItem from="1752057032361" duration="978000" />
+      <workItem from="1752165567342" duration="15000" />
+      <workItem from="1752165643067" duration="12000" />
+      <workItem from="1752167910018" duration="629000" />
+      <workItem from="1752776978434" duration="791000" />
+      <workItem from="1758133578657" duration="467000" />
+      <workItem from="1761671841204" duration="90000" />
+      <workItem from="1762782536841" duration="28000" />
+      <workItem from="1774271537705" duration="2058000" />
+      <workItem from="1774952604613" duration="129000" />
+      <workItem from="1774952807048" duration="4962000" />
+      <workItem from="1775292708324" duration="55000" />
+      <workItem from="1777453505986" duration="8486000" />
+      <workItem from="1777543627685" duration="79000" />
+      <workItem from="1778681422873" duration="76000" />
+      <workItem from="1778770967546" duration="87000" />
+      <workItem from="1778922776322" duration="3041000" />
     </task>
     <task id="LOCAL-00001" summary="created">
       <option name="closed" value="true" />
@@ -250,7 +350,151 @@
       <option name="project" value="LOCAL" />
       <updated>1747397631988</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="object parser for parse serialized object and return it">
+      <option name="closed" value="true" />
+      <created>1747683516441</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1747683516441</updated>
+    </task>
+    <task id="LOCAL-00011" summary="support BigDecimal and BigInteger and Serialized Objects">
+      <option name="closed" value="true" />
+      <created>1747683576165</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1747683576165</updated>
+    </task>
+    <task id="LOCAL-00012" summary="new Version 1.1">
+      <option name="closed" value="true" />
+      <created>1747683660320</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1747683660320</updated>
+    </task>
+    <task id="LOCAL-00013" summary="new Version 1.1">
+      <option name="closed" value="true" />
+      <created>1747737657829</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1747737657829</updated>
+    </task>
+    <task id="LOCAL-00014" summary="design improvements">
+      <option name="closed" value="true" />
+      <created>1774273049517</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1774273049517</updated>
+    </task>
+    <task id="LOCAL-00015" summary="design improvements">
+      <option name="closed" value="true" />
+      <created>1774273114124</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1774273114124</updated>
+    </task>
+    <task id="LOCAL-00016" summary="feat(core): introduce PropertyInjector core engine&#10;&#10;- Implement main PropertyInjector class&#10;- Add annotation-driven field injection (@InjectProperty, @InjectPrefix, @InjectList)&#10;- Support nested object injection&#10;- Add reflection-based field scanning with caching">
+      <option name="closed" value="true" />
+      <created>1777461934521</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1777461934521</updated>
+    </task>
+    <task id="LOCAL-00017" summary="feat(core): introduce PropertySource abstraction&#10;&#10;- Create PropertySource interface for flexible config sources&#10;- Add get() and getAll() contract for property access&#10;- Decouple injector from file-based configuration">
+      <option name="closed" value="true" />
+      <created>1777461956335</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1777461956335</updated>
+    </task>
+    <task id="LOCAL-00018" summary="feat(source): add FilePropertySource implementation&#10;&#10;- Load properties from .properties files using Properties API&#10;- Provide file-based configuration support&#10;- Implement PropertySource interface">
+      <option name="closed" value="true" />
+      <created>1777461978185</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1777461978185</updated>
+    </task>
+    <task id="LOCAL-00019" summary="perf(reflection): add ReflectionCache for field caching&#10;&#10;- Cache declared fields per class&#10;- Avoid repeated reflection calls&#10;- Improve injection performance&#10;- Auto-set fields accessible once per class">
+      <option name="closed" value="true" />
+      <created>1777461995484</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1777461995484</updated>
+    </task>
+    <task id="LOCAL-00020" summary="feat(parser): introduce ParserFactory for type conversion&#10;&#10;- Add registry-based primitive parsers&#10;- Support int, long, short, boolean, char, String&#10;- Add BigDecimal and BigInteger support&#10;- Add LocalDate and LocalDateTime parsing&#10;- Support enum parsing fallback&#10;- Add constructor-based parsing fallback&#10;- Add ObjectParser fallback strategy">
+      <option name="closed" value="true" />
+      <created>1777462010830</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1777462010830</updated>
+    </task>
+    <task id="LOCAL-00021" summary="feat(resolver): introduce ResolverRegistry pipeline&#10;&#10;- Add pluggable resolver chain system&#10;- Support sequential value transformation&#10;- Add support for placeholder and external resolvers&#10;- Enable custom resolver registration">
+      <option name="closed" value="true" />
+      <created>1777462024459</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1777462024459</updated>
+    </task>
+    <task id="LOCAL-00022" summary="feat(security): add PropertyDecryptorRegistry&#10;&#10;- Introduce decryptor registry with lazy instantiation&#10;- Support automatic decryptor caching&#10;- Add runtime instantiation fallback&#10;- Enable pluggable encryption strategies">
+      <option name="closed" value="true" />
+      <created>1777462050336</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1777462050336</updated>
+    </task>
+    <task id="LOCAL-00023" summary="feat(converter): add PropertyConverterRegistry&#10;&#10;- Introduce generic converter system with generics support&#10;- Support manual and automatic converter registration&#10;- Add lazy instantiation of converters&#10;- Provide type-safe conversion pipeline">
+      <option name="closed" value="true" />
+      <created>1777462062387</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1777462062387</updated>
+    </task>
+    <task id="LOCAL-00024" summary=",">
+      <option name="closed" value="true" />
+      <created>1777462117382</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1777462117382</updated>
+    </task>
+    <task id="LOCAL-00025" summary=",">
+      <option name="closed" value="true" />
+      <created>1777462140996</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1777462140996</updated>
+    </task>
+    <task id="LOCAL-00026" summary="new Version">
+      <option name="closed" value="true" />
+      <created>1777462426993</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1777462426993</updated>
+    </task>
+    <task id="LOCAL-00027" summary="new Version">
+      <option name="closed" value="true" />
+      <created>1777462591136</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1777462591136</updated>
+    </task>
+    <option name="localTasksCounter" value="28" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -301,6 +545,32 @@
     <MESSAGE value="show the usage of project in Readme.md file" />
     <MESSAGE value="." />
     <MESSAGE value="Add comprehensive class-level and method-level Javadoc comments  &#10;&#10;Included detailed descriptions and annotations for various classes and methods across the project to enhance code readability, maintainability, and ease of understanding. These changes provide clear explanations of purpose, parameters, return values, and usage guidelines for key components." />
-    <option name="LAST_COMMIT_MESSAGE" value="Add comprehensive class-level and method-level Javadoc comments  &#10;&#10;Included detailed descriptions and annotations for various classes and methods across the project to enhance code readability, maintainability, and ease of understanding. These changes provide clear explanations of purpose, parameters, return values, and usage guidelines for key components." />
+    <MESSAGE value="object parser for parse serialized object and return it" />
+    <MESSAGE value="support BigDecimal and BigInteger and Serialized Objects" />
+    <MESSAGE value="new Version 1.1" />
+    <MESSAGE value="design improvements" />
+    <MESSAGE value="feat(core): introduce PropertyInjector core engine&#10;&#10;- Implement main PropertyInjector class&#10;- Add annotation-driven field injection (@InjectProperty, @InjectPrefix, @InjectList)&#10;- Support nested object injection&#10;- Add reflection-based field scanning with caching" />
+    <MESSAGE value="feat(core): introduce PropertySource abstraction&#10;&#10;- Create PropertySource interface for flexible config sources&#10;- Add get() and getAll() contract for property access&#10;- Decouple injector from file-based configuration" />
+    <MESSAGE value="feat(source): add FilePropertySource implementation&#10;&#10;- Load properties from .properties files using Properties API&#10;- Provide file-based configuration support&#10;- Implement PropertySource interface" />
+    <MESSAGE value="perf(reflection): add ReflectionCache for field caching&#10;&#10;- Cache declared fields per class&#10;- Avoid repeated reflection calls&#10;- Improve injection performance&#10;- Auto-set fields accessible once per class" />
+    <MESSAGE value="feat(parser): introduce ParserFactory for type conversion&#10;&#10;- Add registry-based primitive parsers&#10;- Support int, long, short, boolean, char, String&#10;- Add BigDecimal and BigInteger support&#10;- Add LocalDate and LocalDateTime parsing&#10;- Support enum parsing fallback&#10;- Add constructor-based parsing fallback&#10;- Add ObjectParser fallback strategy" />
+    <MESSAGE value="feat(resolver): introduce ResolverRegistry pipeline&#10;&#10;- Add pluggable resolver chain system&#10;- Support sequential value transformation&#10;- Add support for placeholder and external resolvers&#10;- Enable custom resolver registration" />
+    <MESSAGE value="feat(security): add PropertyDecryptorRegistry&#10;&#10;- Introduce decryptor registry with lazy instantiation&#10;- Support automatic decryptor caching&#10;- Add runtime instantiation fallback&#10;- Enable pluggable encryption strategies" />
+    <MESSAGE value="feat(converter): add PropertyConverterRegistry&#10;&#10;- Introduce generic converter system with generics support&#10;- Support manual and automatic converter registration&#10;- Add lazy instantiation of converters&#10;- Provide type-safe conversion pipeline" />
+    <MESSAGE value="," />
+    <MESSAGE value="new Version" />
+    <option name="LAST_COMMIT_MESSAGE" value="new Version" />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
+  </component>
+  <component name="github-copilot-workspace">
+    <instructionFileLocations>
+      <option value=".github/instructions" />
+    </instructionFileLocations>
+    <promptFileLocations>
+      <option value=".github/prompts" />
+    </promptFileLocations>
   </component>
 </project>
