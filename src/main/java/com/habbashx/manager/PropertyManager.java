@@ -141,8 +141,7 @@ public class PropertyManager {
             for (final String key : properties.stringPropertyNames()) {
                 final String rawValue = properties.getProperty(key);
                 final PropertyValue value = new PropertyValue(rawValue);
-                final PropertyElement propertyElement = new PropertyElement(key,value);
-                propertiesStore.addProperty(key,value);
+                propertiesStore.addProperty(key, value);
             }
         } catch (IOException e){
             throw new RuntimeException(e);
