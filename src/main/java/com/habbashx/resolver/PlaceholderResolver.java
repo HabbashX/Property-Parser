@@ -46,7 +46,7 @@ public final class PlaceholderResolver extends Resolver {
     @Override
     public @NotNull String resolve(@NotNull String value , Properties properties) {
 
-        if (value.isEmpty()) return value;
+        if (value.isEmpty() || value.indexOf("${") == -1) return value;
 
         final StringBuilder result = new StringBuilder();
         final Matcher matcher = PATTERN.matcher(value);
