@@ -4,12 +4,14 @@ import com.habbashx.exception.UnSupportedTypeException;
 import com.habbashx.parser.ObjectParser;
 import org.jetbrains.annotations.Nullable;
 
+import java.lang.reflect.Constructor;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
 /**
  * Factory responsible for parsing string values into strongly typed Java objects.
@@ -39,6 +41,28 @@ public class ParserFactory {
      * Registry of type-specific parsers for fast conversion.
      */
     private static final Map<Class<?>, ValueParser<?>> REGISTRY = new HashMap<>();
+
+    /**
+     * Cache of resolved single-{@code String}-arg constructors, keyed by target type.
+     * Avoids re-resolving (and re-throwing NoSuchMethodException) on every
+     * fallback parse call for the same unregistered type.
+     */
+    private static final Map<Class<?>, Constructor<?>> STRING_CTOR_CACHE = new ConcurrentHashMap<>();
+
+    /**
+     * Sentinel stored in {@link #STRING_CTOR_CACHE} to mark a type as having
+     * no {@code String} constructor, so we don't repeatedly attempt (and fail)
+     * the reflective lookup for it.
+     */
+    private static final Constructor<?> NO_STRING_CTOR;
+
+    static {
+        try {
+            NO_STRING_CTOR = ParserFactory.class.getDeclaredConstructor();
+        } catch (NoSuchMethodException e) {
+            throw new ExceptionInInitializerError(e);
+        }
+    }
 
     static {
         REGISTRY.put(int.class, Integer::parseInt);
@@ -86,13 +110,27 @@ public class ParserFactory {
             return (T) Enum.valueOf((Class<? extends Enum>) type, value);
         }
 
-        try {
-            return type.getConstructor(String.class).newInstance(value);
-        } catch (Exception e) {
-            @Nullable Object result = ObjectParser.parseObject(value);
-            if (type.isInstance(result)) {
-                return type.cast(result);
+        final Constructor<?> ctor = STRING_CTOR_CACHE.computeIfAbsent(type, t -> {
+            try {
+                final Constructor<?> c = t.getConstructor(String.class);
+                c.setAccessible(true);
+                return c;
+            } catch (NoSuchMethodException e) {
+                return NO_STRING_CTOR; // sentinel: no such constructor, cached to avoid retrying
             }
+        });
+
+        if (ctor != NO_STRING_CTOR) {
+            try {
+                return (T) ctor.newInstance(value);
+            } catch (Exception ignored) {
+                // fall through to ObjectParser below
+            }
+        }
+
+        final @Nullable Object result = ObjectParser.parseObject(value);
+        if (type.isInstance(result)) {
+            return type.cast(result);
         }
 
         throw new UnSupportedTypeException("Cannot parse value to type: " + type.getName());
