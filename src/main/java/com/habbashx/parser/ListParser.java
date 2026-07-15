@@ -2,15 +2,13 @@ package com.habbashx.parser;
 
 import com.habbashx.exception.EmptyItemException;
 import com.habbashx.exception.EmptyListException;
-import org.intellij.lang.annotations.Language;
 
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Unmodifiable;
 
 import java.lang.reflect.Type;
-import java.util.Arrays;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 /**
  * The {@code ListParser} class provides utility methods for parsing a comma-separated
@@ -28,6 +26,9 @@ import java.util.stream.Collectors;
  */
 public final class ListParser {
 
+    private ListParser() {
+    }
+
     /**
      * Parses a comma-separated string into an unmodifiable list of objects based on the specified type.
      * The method supports parsing to specific types, such as {@code String} and {@code Integer}.
@@ -39,32 +40,33 @@ public final class ListParser {
      * @throws EmptyListException if the input string does not contain any items
      * @throws UnsupportedOperationException if the provided parameterized type is not supported
      */
-    public static @Unmodifiable List<Object> parseList(@NotNull String rawValue, Type parameterizedType) {
+    public static @Unmodifiable @NotNull List<Object> parseList(@NotNull String rawValue, Type parameterizedType) {
 
-        @Language("RegExp")
         final String[] items = rawValue.split(",");
 
-        if (items.length > 0) {
-
-            return Arrays.stream(items).map(item -> {
-                final String trimmedItem = item.trim();
-
-                if (!trimmedItem.isEmpty() || !trimmedItem.isBlank()) {
-                    if (parameterizedType == String.class) {
-                        return trimmedItem;
-                    } else if (parameterizedType == Integer.class) {
-                        return Integer.parseInt(trimmedItem);
-                    } else {
-                        throw new UnsupportedOperationException("unsupported parameterized type: " + parameterizedType);
-                    }
-                } else {
-
-                    throw new EmptyItemException("item is empty");
-                }
-            }).collect(Collectors.toUnmodifiableList());
-
-        } else {
+        if (items.length == 0) {
             throw new EmptyListException("list is empty");
         }
+
+        final boolean isString = parameterizedType == String.class;
+        final boolean isInteger = parameterizedType == Integer.class;
+
+        if (!isString && !isInteger) {
+            throw new UnsupportedOperationException("unsupported parameterized type: " + parameterizedType);
+        }
+
+        final List<Object> list = new ArrayList<>(items.length);
+
+        for (final String item : items) {
+            final String trimmedItem = item.trim();
+
+            if (trimmedItem.isEmpty()) {
+                throw new EmptyItemException("item is empty");
+            }
+
+            list.add(isString ? trimmedItem : Integer.parseInt(trimmedItem));
+        }
+
+        return List.copyOf(list);
     }
 }
