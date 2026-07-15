@@ -81,6 +81,15 @@ public class PropertyInjector {
      */
     private final Map<Class<?>,List<FieldMeta>> metadataCache = new ConcurrentHashMap<>();
 
+    /**
+     * Cache of individual field metadata, keyed by {@link Field}.
+     * This backs {@link #getFieldMeta(Field)} so that every call site
+     * (injectProperty, inject, injectList, decryptWith, useConverter,
+     * getOrCreate) reuses the same {@link FieldMeta} instance instead of
+     * re-resolving MethodHandles and annotations on every injection.
+     */
+    private final Map<Field, FieldMeta> fieldMetaCache = new ConcurrentHashMap<>();
+
 
     /**
      * Creates a PropertyInjector using a property file.
@@ -215,7 +224,7 @@ public class PropertyInjector {
             final Object nestedTarget = getOrCreate(targetField.getType(),targetField,targetObject,arguments);
             final String prefix = injectPrefix.value();
 
-            final List<FieldMeta> nestedMetas = getFieldMetas(targetObject.getClass());
+            final List<FieldMeta> nestedMetas = getFieldMetas(targetField.getType());
             for (final FieldMeta meta : nestedMetas) {
 
                 final Field nestedField = meta.getField();
@@ -390,8 +399,7 @@ public class PropertyInjector {
             if (instance == null) {
 
                 instance =
-                        clazz
-                                .getDeclaredConstructor()
+                        meta.getOrResolveConstructor(arguments)
                                 .newInstance(arguments);
 
                 meta.set(target, instance);
@@ -409,9 +417,12 @@ public class PropertyInjector {
         }
     }
 
-    @Contract("_ -> new")
+    @Contract("_ -> !null")
     private @NotNull FieldMeta getFieldMeta(final Field field) {
-        return new FieldMeta(field);
+        // IMPORTANT: field.getDeclaringClass() may not equal the class we cached
+        // metadata under (e.g. for nested targets), so we key a dedicated
+        // Field -> FieldMeta cache directly, which is always correct and O(1).
+        return fieldMetaCache.computeIfAbsent(field, FieldMeta::new);
     }
     private List<FieldMeta> getFieldMetas(
             Class<?> clazz
@@ -429,9 +440,9 @@ public class PropertyInjector {
 
                         field.setAccessible(true);
 
-                        metas.add(
-                                new FieldMeta(field)
-                        );
+                        final FieldMeta meta = fieldMetaCache.computeIfAbsent(field, FieldMeta::new);
+
+                        metas.add(meta);
                     }
 
                     return metas;
@@ -491,4 +502,3 @@ public class PropertyInjector {
         }
     }
 }
-
