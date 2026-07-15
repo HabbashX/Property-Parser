@@ -4,9 +4,12 @@ import com.habbashx.annotation.*;
 
 import java.lang.invoke.MethodHandle;
 import java.lang.invoke.MethodHandles;
+import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
 import java.lang.reflect.Type;
+
+import static java.lang.invoke.MethodHandles.lookup;
 
 /**
  * FieldMeta
@@ -23,8 +26,7 @@ public final class FieldMeta {
     /**
      * Lookup used to create MethodHandle accessors.
      */
-    private static final MethodHandles.Lookup LOOKUP =
-            MethodHandles.lookup();
+    private static final MethodHandles.Lookup LOOKUP = lookup();
 
     /**
      * Original reflected field.
@@ -90,6 +92,13 @@ public final class FieldMeta {
      * Decryption rule for encrypted values.
      */
     private final DecryptWith decryptWith;
+
+    /**
+     * Cached constructor for the field's declared type (used for nested
+     * {@code @InjectPrefix} objects). Lazily resolved and cached so it is not
+     * re-looked-up via reflection on every instantiation.
+     */
+    private volatile Constructor<?> cachedConstructor;
 
     /**
      * Creates a cached metadata wrapper for a field.
@@ -202,5 +211,34 @@ public final class FieldMeta {
 
     public DecryptWith getDecryptWith() {
         return decryptWith;
+    }
+
+    /**
+     * Returns the (cached) no-arg-or-matching declared constructor for this
+     * field's type, resolving and caching it on first use.
+     *
+     * @param arguments constructor arguments, used to pick the right constructor arity
+     * @return the resolved constructor
+     * @throws NoSuchMethodException if no matching constructor exists
+     */
+    public Constructor<?> getOrResolveConstructor(Object... arguments) throws NoSuchMethodException {
+        Constructor<?> ctor = cachedConstructor;
+        if (ctor == null) {
+            synchronized (this) {
+                ctor = cachedConstructor;
+                if (ctor == null) {
+                    final Class<?>[] paramTypes = new Class<?>[arguments.length];
+                    for (int i = 0; i < arguments.length; i++) {
+                        paramTypes[i] = arguments[i] == null ? Object.class : arguments[i].getClass();
+                    }
+                    ctor = arguments.length == 0
+                            ? fieldType.getDeclaredConstructor()
+                            : fieldType.getDeclaredConstructor(paramTypes);
+                    ctor.setAccessible(true);
+                    cachedConstructor = ctor;
+                }
+            }
+        }
+        return ctor;
     }
 }
