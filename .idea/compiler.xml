@@ -10,5 +10,17 @@
         <module name="property-parser" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="property-parser.final-compile" target="17" />
+      <module name="property-parser.main" target="17" />
+      <module name="property-parser.test" target="17" />
+    </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="property-parser" options="" />
+      <module name="property-parser.final-compile" options="-proc:none" />
+      <module name="property-parser.main" options="-proc:none" />
+    </option>
   </component>
 </project>

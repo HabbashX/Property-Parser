@@ -9,30 +9,44 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="08ae466d-114a-4c60-98bd-3fe301f875bf" name="Changes" comment="new Version">
+    <list default="true" id="08ae466d-114a-4c60-98bd-3fe301f875bf" name="Changes" comment="nothing changed">
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/property_parser_jar/property-parser.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/habbashx/annotation/InjectProperty.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/habbashx/annotation/InjectProperty.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/habbashx/injector/PropertyInjector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/habbashx/injector/PropertyInjector.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/habbashx/injector/reflection/cache/ReflectionCache.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/habbashx/parser/DataTypeParser.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/habbashx/parser/factory/ValueParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/habbashx/parser/factory/ValueParser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/habbashx/converter/PropertyConverter.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/habbashx/converter/PropertyConverter.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/habbashx/injector/PropertyInjector.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/habbashx/injector/PropertyInjector.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/habbashx/manager/PropertiesManager.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/habbashx/parser/DataTypeParser.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/habbashx/parser/ListParser.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/habbashx/parser/ListParser.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/habbashx/property/PropertiesStore.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/habbashx/property/PropertiesStore.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/habbashx/property/PropertyElement.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/habbashx/property/PropertyElement.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/habbashx/resolver/ExternalPropertyResolver.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/habbashx/resolver/ExternalPropertyResolver.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/habbashx/resolver/PlaceholderResolver.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/habbashx/resolver/PlaceholderResolver.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/habbashx/validation/PropertyValidator.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/habbashx/validation/PropertyValidator.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/module-info.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/module-info.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/createdFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/habbashx/annotation/DecryptWith.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/habbashx/annotation/DefaultValue.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/habbashx/annotation/InjectList.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/habbashx/annotation/InjectPrefix.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/habbashx/annotation/InjectProperty.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/habbashx/annotation/Required.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/habbashx/annotation/UseConverter.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/habbashx/converter/PropertyConverter.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/habbashx/converter/registry/PropertyConverterRegistry.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/habbashx/decryptor/PropertyDecryptor.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/habbashx/decryptor/registry/PropertyDecryptorRegistry.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/habbashx/exception/EmptyItemException.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/habbashx/exception/EmptyListException.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/habbashx/exception/InvalidEnumerationValueException.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/habbashx/exception/PropertyConverterException.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/habbashx/exception/PropertyDecryptorException.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/habbashx/exception/UnSupportedTypeException.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/habbashx/injector/PropertyInjector.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/habbashx/injector/meta/FieldMeta.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/habbashx/injector/source/FilePropertySource.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/habbashx/injector/source/PropertySource.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/habbashx/manager/PropertyManager.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/habbashx/parser/ListParser.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/habbashx/parser/ObjectParser.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/habbashx/parser/factory/ParserFactory.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/habbashx/parser/factory/ValueParser.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/habbashx/property/PropertiesStore.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/habbashx/property/PropertyElement.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/habbashx/property/PropertyValue.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/habbashx/resolver/ExternalPropertyResolver.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/habbashx/resolver/PlaceholderResolver.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/habbashx/resolver/Resolver.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/habbashx/resolver/registry/ResolverRegistry.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/habbashx/validation/PropertyValidator.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -43,6 +57,9 @@
     <persistenceIdMap>
       <entry key="_C:/Users/abo.dalal.laptop/Desktop/projects/property-parser" value="2voYwg2o5OqCX4IUcGgLMiCFLgp" />
     </persistenceIdMap>
+  </component>
+  <component name="EmbeddingIndexingInfo">
+    <option name="cachedIndexableFilesCount" value="51" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -77,6 +94,11 @@
 }</component>
   <component name="HighlightingSettingsPerFile">
     <setting file="jar://$PROJECT_DIR$/../../../../../Program Files/Java/jdk-17/lib/src.zip!/java.base/java/lang/Class.java" root0="SKIP_INSPECTION" />
+    <setting file="jar://$PROJECT_DIR$/../../../../../Program Files/Java/jdk-17/lib/src.zip!/java.management/com/sun/jmx/remote/security/FileLoginModule.java" root0="SKIP_INSPECTION" />
+  </component>
+  <component name="McpProjectServerCommands">
+    <commands />
+    <urls />
   </component>
   <component name="ProblemsViewState">
     <option name="selectedTabId" value="CurrentFile" />
@@ -113,12 +135,15 @@
     &quot;Maven.property-parser [site].executor&quot;: &quot;Run&quot;,
     &quot;Maven.property-parser [test].executor&quot;: &quot;Run&quot;,
     &quot;Maven.property-parser [verify].executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.MCP Project settings loaded&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
+    &quot;com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;master&quot;,
     &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;junie.onboarding.icon.badge.shown&quot;: &quot;true&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
     &quot;last_opened_file_path&quot;: &quot;C:/Users/abo.dalal.laptop/Desktop/projects/property-parser&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
@@ -129,7 +154,8 @@
     &quot;project.structure.last.edited&quot;: &quot;Artifacts&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;editor.preferences.fonts.default&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settingsdialog.IDE.editor.colors.Java&quot;,
+    &quot;to.speed.mode.migration.done&quot;: &quot;true&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
@@ -217,7 +243,6 @@
     <attachedChunks>
       <set>
         <option value="bundled-jdk-30f59d01ecdd-2fc7cc6b9a17-intellij.indexing.shared.core-IU-253.31033.145" />
-        <option value="bundled-js-predefined-d6986cc7102b-9b0f141eb926-JavaScript-IU-253.31033.145" />
       </set>
     </attachedChunks>
   </component>
@@ -276,7 +301,10 @@
       <workItem from="1777543627685" duration="79000" />
       <workItem from="1778681422873" duration="76000" />
       <workItem from="1778770967546" duration="87000" />
-      <workItem from="1778922776322" duration="3041000" />
+      <workItem from="1778922776322" duration="3851000" />
+      <workItem from="1783155289127" duration="3315000" />
+      <workItem from="1783162603976" duration="80000" />
+      <workItem from="1784122696018" duration="660000" />
     </task>
     <task id="LOCAL-00001" summary="created">
       <option name="closed" value="true" />
@@ -494,7 +522,31 @@
       <option name="project" value="LOCAL" />
       <updated>1777462591136</updated>
     </task>
-    <option name="localTasksCounter" value="28" />
+    <task id="LOCAL-00028" summary="perf(injector): introduce FieldMeta caching and MethodHandle optimization&#10;&#10;- Introduced FieldMeta as cached reflection descriptor for fields&#10;- Cached annotations, field types, and generic metadata per class&#10;- Replaced Field.set and Field.get with MethodHandle-based accessors&#10;- Removed repeated reflection calls from hot injection path&#10;- Optimized inject, injectProperty, injectList, and nested injection logic&#10;- Added metadata caching layer using ConcurrentHashMap for class-level lookup&#10;- Improved runtime performance by minimizing reflection overhead to initialization phase only&#10;&#10;This commit significantly improves runtime performance by moving all reflection operations out of the hot path and replacing them with cached metadata and JVM-optimized MethodHandle access.">
+      <option name="closed" value="true" />
+      <created>1778925883524</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1778925883524</updated>
+    </task>
+    <task id="LOCAL-00029" summary="refactor(injector): extract FieldMeta into standalone metadata class&#10;&#10;- Moved FieldMeta from internal PropertyInjector implementation into a dedicated class&#10;- Decoupled reflection metadata representation from injection engine logic&#10;- Centralized field caching, annotation storage, and MethodHandle access into FieldMeta&#10;- Improved separation of concerns between:&#10;    - PropertyInjector (execution engine)&#10;    - FieldMeta (reflection metadata layer)&#10;- Reduced complexity inside PropertyInjector by delegating all field-level metadata handling&#10;- Improved maintainability and scalability for future injector extensions&#10;&#10;This refactor establishes FieldMeta as a reusable, framework-level metadata component instead of an internal helper structure.">
+      <option name="closed" value="true" />
+      <created>1778925914897</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1778925914897</updated>
+    </task>
+    <task id="LOCAL-00030" summary="nothing changed">
+      <option name="closed" value="true" />
+      <created>1778925948383</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1778925948383</updated>
+    </task>
+    <option name="localTasksCounter" value="31" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -559,7 +611,10 @@
     <MESSAGE value="feat(converter): add PropertyConverterRegistry&#10;&#10;- Introduce generic converter system with generics support&#10;- Support manual and automatic converter registration&#10;- Add lazy instantiation of converters&#10;- Provide type-safe conversion pipeline" />
     <MESSAGE value="," />
     <MESSAGE value="new Version" />
-    <option name="LAST_COMMIT_MESSAGE" value="new Version" />
+    <MESSAGE value="perf(injector): introduce FieldMeta caching and MethodHandle optimization&#10;&#10;- Introduced FieldMeta as cached reflection descriptor for fields&#10;- Cached annotations, field types, and generic metadata per class&#10;- Replaced Field.set and Field.get with MethodHandle-based accessors&#10;- Removed repeated reflection calls from hot injection path&#10;- Optimized inject, injectProperty, injectList, and nested injection logic&#10;- Added metadata caching layer using ConcurrentHashMap for class-level lookup&#10;- Improved runtime performance by minimizing reflection overhead to initialization phase only&#10;&#10;This commit significantly improves runtime performance by moving all reflection operations out of the hot path and replacing them with cached metadata and JVM-optimized MethodHandle access." />
+    <MESSAGE value="refactor(injector): extract FieldMeta into standalone metadata class&#10;&#10;- Moved FieldMeta from internal PropertyInjector implementation into a dedicated class&#10;- Decoupled reflection metadata representation from injection engine logic&#10;- Centralized field caching, annotation storage, and MethodHandle access into FieldMeta&#10;- Improved separation of concerns between:&#10;    - PropertyInjector (execution engine)&#10;    - FieldMeta (reflection metadata layer)&#10;- Reduced complexity inside PropertyInjector by delegating all field-level metadata handling&#10;- Improved maintainability and scalability for future injector extensions&#10;&#10;This refactor establishes FieldMeta as a reusable, framework-level metadata component instead of an internal helper structure." />
+    <MESSAGE value="nothing changed" />
+    <option name="LAST_COMMIT_MESSAGE" value="nothing changed" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
